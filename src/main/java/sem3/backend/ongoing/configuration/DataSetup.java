@@ -29,7 +29,11 @@ public class DataSetup implements CommandLineRunner {
         carRepository.save(new Car("Suzuki","S-Cross",500));
         carRepository.save(new Car("Peugeot","208",480));
 
-        memberRepository.save(new Member("Kurt","Wonnegut","kw@somewhere.com"));
+        Member kurt = new Member("Kurt","Wonnegut","kw@somewhere.com");
+        kurt.setStreet("Lyngbyvej 27");
+        kurt.setZip("2800");
+        kurt.setCity("Lyngby");
+        memberRepository.save(kurt);
         memberRepository.save(new Member("Hanne","Wonnegut","hanne@somewhere.com"));
         memberRepository.save(new Member("Jan","Olsen","jan@somewhere.com"));
         memberRepository.save(new Member("Jannie","Peterson","jannie@somewhere.com"));
