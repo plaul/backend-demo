@@ -20,9 +20,10 @@ public class DataSetup implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        carRepository.save(new Car("Volvo","V40",560));
-        carRepository.save(new Car("Volvo","V40",560));
-        carRepository.save(new Car("Volvo","V40",560));
+        carRepository.save(new Car("Volvo","C40",560));
+        carRepository.save(new Car("Volvo","C40",560));
+        carRepository.save(new Car("Volvo","C40",560));
+        carRepository.save(new Car("Volvo","XC60",560));
         carRepository.save(new Car("Suzuki","Vitara",500));
         carRepository.save(new Car("Suzuki","Vitara",500));
         carRepository.save(new Car("Suzuki","S-Cross",500));
@@ -30,7 +31,7 @@ public class DataSetup implements CommandLineRunner {
 
         memberRepository.save(new Member("Kurt","Wonnegut","kw@somewhere.com"));
         memberRepository.save(new Member("Hanne","Wonnegut","hanne@somewhere.com"));
-        memberRepository.save(new Member("Jan","Olsen","hanne@somewhere.com"));
-        memberRepository.save(new Member("Jannie","Peterson","jan@somewhere.com"));
+        memberRepository.save(new Member("Jan","Olsen","jan@somewhere.com"));
+        memberRepository.save(new Member("Jannie","Peterson","jannie@somewhere.com"));
     }
 }
