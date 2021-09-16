@@ -7,6 +7,7 @@ import lombok.Setter;
 import sem3.backend.ongoing.entities.Car;
 
 import javax.persistence.Column;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -37,10 +38,16 @@ public class CarDTO {
     }
 
     public static List<CarDTO> carDTOSfromCar(Iterable<Car> cars){
-        List<CarDTO> dtos = StreamSupport.stream(cars.spliterator(), false)
-                .map(car -> new CarDTO(car))
-                .collect(Collectors.toList());
+        List<CarDTO> dtos = new ArrayList<>();
+        for(Car car : cars){
+            CarDTO aCar = new CarDTO(car);
+            dtos.add(aCar);
+        }
         return dtos;
+//        List<CarDTO> dtos = StreamSupport.stream(cars.spliterator(), false)
+//                .map(car -> new CarDTO(car))
+//                .collect(Collectors.toList());
+//        return dtos;
     }
 
     public static Car carFromCarDTO(CarDTO car){

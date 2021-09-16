@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import sem3.backend.ongoing.configuration.DataSetup;
 import sem3.backend.ongoing.dtos.CarDTO;
 import sem3.backend.ongoing.repositories.CarRepository;
 import sem3.backend.ongoing.testUtils.TestDataMaker;
@@ -20,7 +22,6 @@ import sem3.backend.ongoing.testUtils.TestDataMaker;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 @AutoConfigureTestDatabase
 @EnableAutoConfiguration

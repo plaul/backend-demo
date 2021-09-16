@@ -5,6 +5,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +31,9 @@ public class Car {
     @UpdateTimestamp
     LocalDateTime dateUpdated;
 
+    @OneToMany(mappedBy = "car", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    List<Reservation> reservations = new ArrayList<>();
+
     public Car(String brand, String model) {
         this.brand = brand;
         this.model = model;
@@ -37,6 +42,11 @@ public class Car {
         this.brand = brand;
         this.model = model;
         this.pricePrDay = pricePrDay;
+    }
+
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+        reservation.setCar(this);
     }
 
     public Car() {}
