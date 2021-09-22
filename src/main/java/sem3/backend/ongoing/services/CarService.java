@@ -26,6 +26,7 @@ public class CarService {
     }
 
     public CarDTO getCar(int id) {
+
         Car car = carRepository.findById(id).orElseThrow();
         return new CarDTO(car);
     }

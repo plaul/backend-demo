@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -42,10 +44,18 @@ public class Member {
      */
     int ranking = -1; //-1 = NOT SET
 
+    @OneToMany(mappedBy = "reservedTo", cascade = {CascadeType.PERSIST,CascadeType.MERGE})
+    List<Reservation> reservations = new ArrayList<>();
+
     public Member(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public void addReservation(Reservation reservation){
+        reservations.add(reservation);
+        reservation.setReservedTo(this);
     }
 
     public Member() {}

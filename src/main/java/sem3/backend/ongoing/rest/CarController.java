@@ -21,12 +21,14 @@ public class CarController {
                          @RequestParam(required = false) String model){
         if(brand == null && model != null){
             //We will eventually handle this better
-            throw new IllegalArgumentException("make required when model is supplied");
+            throw new IllegalArgumentException("make is required when model is supplied");
         }
        return carService.getCars(brand,model);
     }
+
     @GetMapping("/{id}")
     CarDTO getCar(@PathVariable int id) {
+
         return carService.getCar(id);
     }
 

@@ -1,8 +1,10 @@
 package sem3.backend.ongoing.rest;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +15,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ActiveProfiles;
 import sem3.backend.ongoing.dtos.CarDTO;
 import sem3.backend.ongoing.repositories.CarRepository;
 import sem3.backend.ongoing.testUtils.TestDataMaker;
@@ -21,7 +24,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@ActiveProfiles("test")  //Will prevent the DateSetup CommandlineRunner from running
 @AutoConfigureTestDatabase
 @EnableAutoConfiguration
 @SpringBootTest(classes = {sem3.backend.ongoing.OngoingApplication.class},
@@ -45,6 +48,11 @@ public class CarControllerTest {
     @BeforeEach
     public void setUpCarData(){
         carIds = TestDataMaker.makeCars(carRepository);
+    }
+
+    @AfterEach
+    public void cleanUp(){
+      //  carRepository.deleteAll();
     }
 
     @Test
